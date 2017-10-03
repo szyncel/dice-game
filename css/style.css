@@ -1,0 +1,58 @@
+.container{
+    margin-top:4%;
+    margin-bottom: 4%;
+    background-color: silver;
+}
+
+.lead{
+    margin-top: 3%;
+    cursor: pointer;
+}
+
+.lead:hover{
+    font-weight:500;
+}
+
+
+
+
+.rounded{
+    margin-top: 15%;
+    margin-bottom: 37%;
+    width: 100px;
+    height: 100px;
+}
+
+.name{
+    margin-bottom: 5%;
+    
+}
+
+.actualTurn{
+    text-decoration: underline;
+}
+
+.center{
+    text-align: center;
+}
+
+
+.current{
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    margin: 0 auto;
+    margin-top: 50%;
+    margin-bottom: 25%;
+    width: 150px;
+    max-height: 70px;
+}
+
+
+
+.point{
+    padding: 0;
+font-size: 25px;
+}
