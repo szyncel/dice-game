@@ -3,6 +3,7 @@
 function Game() {
     this.totalPoints = document.querySelectorAll('#totalPoints');
     this.actualPoints = document.querySelectorAll('.point');
+    this.turns = document.querySelectorAll('.turn');
     this.buttons = document.querySelectorAll('.lead');
     this.playersName = document.querySelectorAll('.name');
     this.boneImg = document.querySelector('.rounded');
@@ -17,11 +18,13 @@ function Game() {
 
     this.player1Results = {
         total: 0,
-        actual: 0
+        actual: 0,
+        turn: 0
     };
     this.player2Results = {
         total: 0,
-        actual: 0
+        actual: 0,
+        turn: 0
     };
 
     this.newGameButton.onclick = function () {
@@ -30,14 +33,11 @@ function Game() {
     }.bind(this);
 
     this.rollDiceButton.onclick = function () {
-        // if (this.player1Results.actual !== 0 || this.player2Results.actual !== 0) {
         if (this.isActive) {
             if (this.actualTurn === 1) this.player1Results.actual = this.diceNumber = randomNum(1, 6);
             else this.player2Results.actual = this.diceNumber = randomNum(1, 6);
             this.animateDice();
-
             this.updateActualPoints();
-            // }
         }
     }.bind(this);
 
@@ -93,6 +93,9 @@ Game.prototype.updateTotalPoints = function () {
         this.totalPoints[0].innerHTML = this.player1Results.total;
         this.player1Results.actual = 0;
         this.actualPoints[0].innerHTML = this.player1Results.actual;
+
+        this.player2Results.turn += 1;
+        this.turns[1].innerHTML = this.player2Results.turn;
     }
     else {
         this.player2Results.total += this.player2Results.actual;
@@ -100,26 +103,39 @@ Game.prototype.updateTotalPoints = function () {
         this.player2Results.actual = 0;
         this.actualPoints[1].innerHTML = this.player2Results.actual;
 
+        this.player1Results.turn += 1;
+        this.turns[0].innerHTML = this.player1Results.turn;
+
     }
+
+}
+
+Game.prototype.init=function(){
 
 }
 
 
 Game.prototype.reset = function () {
+    this.buttons[2].classList.add('disabled');
+    this.buttons[1].classList.remove('disabled');
     this.actualTurn = 1;
     this.player1Results = {
         total: 0,
-        actual: 0
+        actual: 0,
+        turn: 1
     };
     this.player2Results = {
         total: 0,
-        actual: 0
+        actual: 0,
+        turn: 0
     };
 
     this.actualPoints[0].innerHTML = this.player1Results.actual
     this.actualPoints[1].innerHTML = this.player2Results.actual
     this.totalPoints[0].innerHTML = this.player1Results.total;
     this.totalPoints[1].innerHTML = this.player2Results.total;
+    this.turns[0].innerHTML = this.player1Results.turn;
+    this.turns[1].innerHTML = this.player2Results.turn;
 
 
 }
